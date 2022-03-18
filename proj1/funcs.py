@@ -1,5 +1,5 @@
 import numpy
-from numpy import random
+from numpy import random as r
 from timeit import repeat
 
 
@@ -12,12 +12,12 @@ from timeit import repeat
 def generate_random_int_list(length):
     int_list = []
     for i in range(length):
-        int_list.append(random.random_integers(1, 100000))
+        int_list.append(r.random_integers(1, 100000))
     return int_list
 
 
 def generate_random_int_array(length):
-    return random.randint(1, 100000, size=length)
+    return r.randint(1, 100000, size=length)
 
 
 # 2
@@ -34,10 +34,10 @@ def search_in(collection, val):
     else:
         return -1
 
-#devolve lista com durações das várias chamadas
-def get_durations(search_func, nr_of_calls):
-    return repeat(lambda: search_func, number=1, repeat=nr_of_calls)
-
 #devolve duração média dada uma lista de durações
-def get_avg_duration(duration_list: list):
+def get_avg_duration(search_func, nr_of_calls):
+    duration_list = repeat(lambda: search_func, number=1, repeat=nr_of_calls)
     return sum(duration_list)/len(duration_list)
+
+def get_random_item_of(collection):
+    return r.randint(0, len(collection))
