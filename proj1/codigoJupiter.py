@@ -123,6 +123,43 @@ def plot_func():
         plt.show()
 
 
+def plot_func_array():
+    input_sizesIN = []
+    avg_durationsIN = []
+    input_sizesPES = []
+    avg_durationsPES = []
+    input_sizesBIN = []
+    avg_durationsBIN = []
+    try:
+        for i in range(1000, 10001, 1000):
+            list = generate_random_int_array(i)
+
+            input_sizesIN.append(i)
+            input_sizesPES.append(i)
+            input_sizesBIN.append(i)
+            avg_durationsIN.append(get_avg_duration(search_in(list, int_array_item), 35))
+            avg_durationsPES.append(get_avg_duration(search_pes(list, int_array_item), 35))
+            avg_durationsBIN.append(get_avg_duration(search_bin(list, int_array_item), 35))
+
+    except:
+        error = True
+    finally:
+        plt.plot(input_sizesIN, avg_durationsIN, color='C1')  # laranja
+        plt.plot(input_sizesPES, avg_durationsPES, color='C2')  # verde
+        plt.plot(input_sizesBIN, avg_durationsBIN, color='C3')  # vermelho
+
+        plt.xlabel("size")
+        plt.ylabel("duration")
+
+        red_patch = mpatches.Patch(color='C3', label='search in')
+        green_patch = mpatches.Patch(color='C2', label='search pes')
+        orange_patch = mpatches.Patch(color='C1', label='search bin')
+
+        plt.legend(handles=[red_patch, green_patch, orange_patch])
+
+        plt.show()
+
+
 if __name__ == '__main__':
     ## declare data structures
     int_list = generate_random_int_list(100)
@@ -173,7 +210,11 @@ if __name__ == '__main__':
     print("")
 
     print("Questão 4")
+    print("Lista")
     plot_func()
+
+    print("Array")
+    plot_func_array()
 
     print("")
 
