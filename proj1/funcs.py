@@ -21,7 +21,6 @@ def generate_random_int_array(length):
 
 
 # 2
-
 def search_in(collection, val):
     if isinstance(collection, list):
         if val in collection:
@@ -34,6 +33,15 @@ def search_in(collection, val):
     else:
         return -1
 
+def search_bin(collection, val):
+    if isinstance(collection, list):
+        collection.sort()
+        return binarySearch(collection, 0, len(collection), val)
+
+    elif isinstance(collection, numpy.ndarray):
+        sorted = numpy.sort(collection)
+        return binarySearch(sorted, 0, sorted.size, val)
+
 #devolve duração média dada uma lista de durações
 def get_avg_duration(search_func, nr_of_calls):
     duration_list = repeat(lambda: search_func, number=1, repeat=nr_of_calls)
@@ -41,3 +49,18 @@ def get_avg_duration(search_func, nr_of_calls):
 
 def get_random_item_of(collection):
     return r.randint(0, len(collection))
+
+### Binary Search implementation
+def binarySearch(arr, start, size, x):
+    if size >= 1:
+
+        mid = (start + ( size - 1 )) // 2
+        if mid == arr[mid]:
+            return  mid
+
+        if arr[mid] > x:
+            binarySearch(arr, start, mid - 1, x)
+        else:
+            binarySearch(arr, mid + 1, size, x)
+    else:
+        return -1
