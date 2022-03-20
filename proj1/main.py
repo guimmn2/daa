@@ -10,6 +10,17 @@ if __name__ == '__main__':
     int_list_item = f.get_random_item_of(int_list)
     int_array_item = f.get_random_item_of(int_array)
 
+    def teste():
+        avgdurations = []
+        for i in range(1000, 1000000, 1000):
+            try:
+                list = f.generate_random_int_array(i)
+                n2 = f.get_avg_duration(f.search_in(list, int_array_item), 35)
+                plt.plot(list, n2)
+
+            finally:
+                plt.show()
+
     print("3")
     print(" ---------------------------------- ")
     print("search_in(int_list, val)")
@@ -92,3 +103,7 @@ if __name__ == '__main__':
     print("array with 4000")
     print(f"a: {f.get_avg_duration(f.search_bin(f.generate_random_int_array(4000), -1), 35)}")
     print(f"b: {f.get_avg_duration(f.search_bin(f.generate_random_int_array(4000), int_array_item), 35)}")
+
+
+    testeResults = teste()
+    plt.plot()

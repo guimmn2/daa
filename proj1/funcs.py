@@ -47,6 +47,10 @@ def get_avg_duration(search_func, nr_of_calls):
     duration_list = repeat(lambda: search_func, number=1, repeat=nr_of_calls)
     return sum(duration_list)/len(duration_list)
 
+#devolve lista com durações das várias chamadas
+def get_durations_list(search_func, nr_of_calls):
+    return repeat(lambda: search_func, number=1, repeat=nr_of_calls)
+
 def get_random_item_of(collection):
     return r.randint(0, len(collection))
 
