@@ -133,10 +133,10 @@ if __name__ == '__main__':
 
     ##data structures with range()
     int_list_range = [i for i in range(101)]
-    int_array_range = numpy.array(i for i in range(101))
+    int_array_range = numpy.arange(101)
 
     int_list_item_range = get_random_item_of(int_list_range)
-    int_array_item_range = numpy.random.choice(int_array_range, size=1)
+    int_array_item_range = get_random_item_of(int_array_range)
 
     print("Questão 3")
     print(" ---------------------------------- ")
